@@ -49,7 +49,7 @@ local function AddVehicle(name, model, price, class, donatoronly, jobs)
 		icon.speed = 0
 		icon.isdonator = donatoronly
 		local paint = icon.Paint
-		icon.Paint = function(self)
+		icon.Paint = function(self, w, h)
 			surface.SetDrawColor(Color(0, 0, 0, 255))
 			//surface.DrawRect(-2, -2, 132, 130)
 			local x,y = self:LocalToScreen(0, 0)
@@ -59,7 +59,7 @@ local function AddVehicle(name, model, price, class, donatoronly, jobs)
 			
 			
 			render.SetScissorRect(x, py, x + 128, y + math.max(pytall-y, 0), true)
-			paint(self)
+			paint(self, w, h)
 			render.SetScissorRect(0,0,0,0,false)
 			
 			if self.isdonator then
